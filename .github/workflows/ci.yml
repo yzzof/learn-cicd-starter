@@ -29,5 +29,6 @@ jobs:
       - name: Style
         run: test -z $(go fmt ./...)
       - name: Run staticcheck
-        working-directory: .
-        run: $(go env GOPATH)/bin/staticcheck ./...
+        run: |
+          cd $GITHUB_WORKSPACE
+          $(go env GOPATH)/bin/staticcheck ./...
